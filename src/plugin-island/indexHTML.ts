@@ -31,7 +31,7 @@ export function pluginIndexHtml(): Plugin {
                 server.middlewares.use(async (req, res, next) => {
                     let html = await readFile(DEFAULT_HTML_PATH, 'utf-8')
                     try {
-                        //转换index.html专用钩子
+                        //把所有插件的transformIndexHtml都执行一遍
                         html = await server.transformIndexHtml(
                             req.url,
                             html,
